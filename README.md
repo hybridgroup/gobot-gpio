@@ -1,3 +1,3 @@
 # gobot-GPIO
 
-A Gobot Drivers for GPIO devices
+Gobot Drivers for GPIO devices
