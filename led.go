@@ -1,49 +1,51 @@
 package gobotGPIO
 
-import "github.com/hybridgroup/gobot"
-import "reflect"
+import (
+	"github.com/hybridgroup/gobot"
+	"reflect"
+)
 
 type Led struct {
-  gobot.Driver
-  adaptor interface{}
-  High bool
+	gobot.Driver
+	Adaptor *interface{}
+	High    bool
 }
 
-func NewLed(a interface{}) *Led{
-  l := Led{High: false, adaptor: a}
-  return &l
+func NewLed(a interface{}) *Led {
+	l := new(Led)
+	l.High = false
+	l.Adaptor = &a
+	return l
 }
 
 func (l *Led) IsOn() bool {
-  return l.High
+	return l.High
 }
 
 func (l *Led) IsOff() bool {
-  return !l.IsOn()
+	return !l.IsOn()
 }
 
 func (l *Led) On() bool {
-  l.changeState(l.Pin, "1")
-  l.High = true
-  return true
+	l.changeState(l.Pin, "1")
+	l.High = true
+	return true
 }
 
 func (l *Led) Off() bool {
-  l.changeState(l.Pin, "0")
-  l.High = false
-  return true
+	l.changeState(l.Pin, "0")
+	l.High = false
+	return true
 }
 
 func (l *Led) Toggle() {
-  if l.IsOn() {
-    l.Off()
-  } else {
-    l.On() 
-  }
+	if l.IsOn() {
+		l.Off()
+	} else {
+		l.On()
+	}
 }
 
 func (l *Led) changeState(pin string, level string) {
-  args := []reflect.Value{reflect.ValueOf(pin), reflect.ValueOf(level)}
-  reflect.ValueOf(l.adaptor).Elem().MethodByName("DigitalWrite").Call(args)
+	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "DigitalWrite", pin, level)
 }
-
