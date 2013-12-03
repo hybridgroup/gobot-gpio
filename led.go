@@ -15,6 +15,11 @@ func NewLed(a interface{}) *Led {
 	l := new(Led)
 	l.High = false
 	l.Adaptor = &a
+	l.Commands = []string{
+		"ToggleC",
+		"OnC",
+		"OffC",
+	}
 	return l
 }
 
