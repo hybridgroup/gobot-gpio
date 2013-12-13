@@ -10,6 +10,10 @@ func (l *Led) OnC(params map[string]interface{}) {
 func (l *Led) OffC(params map[string]interface{}) {
 	l.Off()
 }
+func (l *Led) BrightnessC(params map[string]interface{}) {
+	level := uint8(params["level"].(float64))
+	l.Brightness(level)
+}
 
 // Servo
 func (l *Servo) MoveC(params map[string]interface{}) {

@@ -19,6 +19,7 @@ func NewLed(a interface{}) *Led {
 		"ToggleC",
 		"OnC",
 		"OffC",
+		"BrightnessC",
 	}
 	return l
 }
@@ -49,6 +50,10 @@ func (l *Led) Toggle() {
 	} else {
 		l.On()
 	}
+}
+
+func (l *Led) Brightness(level uint8) {
+	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "AnalogWrite", l.Pin, level)
 }
 
 func (l *Led) changeState(pin string, level string) {
