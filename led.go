@@ -53,7 +53,7 @@ func (l *Led) Toggle() {
 }
 
 func (l *Led) Brightness(level uint8) {
-	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "AnalogWrite", l.Pin, level)
+	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "PwmWrite", l.Pin, level)
 }
 
 func (l *Led) changeState(pin string, level string) {
