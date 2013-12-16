@@ -16,7 +16,6 @@ func NewButton(a interface{}) *Button {
 	b.Active = false
 	b.Adaptor = &a
 	b.Events = make(map[string]chan interface{})
-	b.Events["update"] = make(chan interface{})
 	b.Events["push"] = make(chan interface{})
 	b.Events["release"] = make(chan interface{})
 	b.Commands = []string{}
@@ -24,32 +23,26 @@ func NewButton(a interface{}) *Button {
 }
 
 func (b *Button) StartDriver() {
-	b.Active = false
+	state := 0
 	gobot.Every(b.Interval, func() {
 		new_value := b.readState(b.Pin)
-		if new_value != b.Active {
+		if new_value != state && new_value != -1 {
+			state = new_value
 			b.update(new_value)
 		}
 	})
 }
 
-func (b *Button) readState(pin string) bool {
-	i := gobot.Call(reflect.ValueOf(b.Adaptor).Elem().Interface(), "DigitalRead", pin)[0].Float()
-	if i == 1 {
-		return true
-	} else {
-		return false
-	}
+func (b *Button) readState(pin string) int {
+	return int(gobot.Call(reflect.ValueOf(b.Adaptor).Elem().Interface(), "DigitalRead", pin)[0].Int())
 }
 
-func (b *Button) update(new_val bool) {
-	if new_val == true {
+func (b *Button) update(new_val int) {
+	if new_val == 1 {
 		b.Active = true
-		b.Events["update"] <- map[string]interface{}{"push": new_val}
 		b.Events["push"] <- new_val
 	} else {
 		b.Active = false
-		b.Events["update"] <- map[string]interface{}{"release": new_val}
 		b.Events["release"] <- new_val
 	}
 }
