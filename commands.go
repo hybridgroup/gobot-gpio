@@ -17,7 +17,7 @@ func (l *Led) BrightnessC(params map[string]interface{}) {
 
 // Servo
 func (l *Servo) MoveC(params map[string]interface{}) {
-	angle := int(params["angle"].(float64))
+	angle := uint8(params["angle"].(float64))
 	l.Move(angle)
 }
 func (l *Servo) MinC(params map[string]interface{}) {
