@@ -33,13 +33,13 @@ func (l *Led) IsOff() bool {
 }
 
 func (l *Led) On() bool {
-	l.changeState(l.Pin, "1")
+	l.changeState("1")
 	l.High = true
 	return true
 }
 
 func (l *Led) Off() bool {
-	l.changeState(l.Pin, "0")
+	l.changeState("0")
 	l.High = false
 	return true
 }
@@ -56,6 +56,6 @@ func (l *Led) Brightness(level uint8) {
 	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "PwmWrite", l.Pin, level)
 }
 
-func (l *Led) changeState(pin string, level string) {
-	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "DigitalWrite", pin, level)
+func (l *Led) changeState(level string) {
+	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "DigitalWrite", l.Pin, level)
 }
