@@ -22,7 +22,7 @@ func NewButton(a interface{}) *Button {
 	return b
 }
 
-func (b *Button) StartDriver() {
+func (b *Button) Start() bool {
 	state := 0
 	gobot.Every(b.Interval, func() {
 		new_value := b.readState(b.Pin)
@@ -31,6 +31,7 @@ func (b *Button) StartDriver() {
 			b.update(new_value)
 		}
 	})
+	return true
 }
 
 func (b *Button) readState(pin string) int {

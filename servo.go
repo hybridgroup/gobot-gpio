@@ -24,6 +24,8 @@ func NewServo(a interface{}) *Servo {
 	return s
 }
 
+func (s *Servo) Start() bool { return true }
+
 func (s *Servo) InitServo() {
 	gobot.Call(reflect.ValueOf(s.Adaptor).Elem().Interface(), "InitServo")
 }

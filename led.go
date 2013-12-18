@@ -24,6 +24,8 @@ func NewLed(a interface{}) *Led {
 	return l
 }
 
+func (l *Led) Start() bool { return true }
+
 func (l *Led) IsOn() bool {
 	return l.High
 }
