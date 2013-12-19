@@ -29,3 +29,21 @@ func (l *Servo) CenterC(params map[string]interface{}) {
 func (l *Servo) MaxC(params map[string]interface{}) {
 	l.Max()
 }
+
+// Digital Sensor
+func (d *DigitalSensor) ReadC(params map[string]interface{}) int {
+	return d.Read()
+}
+func (d *DigitalSensor) WriteC(params map[string]interface{}) {
+	level := params["level"].(string)
+	d.Write(level)
+}
+
+// Analog Sensor
+func (d *AnalogSensor) ReadC(params map[string]interface{}) int {
+	return d.Read()
+}
+func (d *AnalogSensor) WriteC(params map[string]interface{}) {
+	level := uint8(params["level"].(float64))
+	d.Write(level)
+}
