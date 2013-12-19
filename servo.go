@@ -2,19 +2,23 @@ package gobotGPIO
 
 import (
 	"github.com/hybridgroup/gobot"
-	"reflect"
 )
+
+type ServoInterface interface {
+	InitServo()
+	ServoWrite(string, uint8)
+}
 
 type Servo struct {
 	gobot.Driver
-	Adaptor      *interface{}
+	Adaptor      ServoInterface
 	CurrentAngle uint8
 }
 
-func NewServo(a interface{}) *Servo {
+func NewServo(a ServoInterface) *Servo {
 	s := new(Servo)
 	s.CurrentAngle = 0
-	s.Adaptor = &a
+	s.Adaptor = a
 	s.Commands = []string{
 		"MoveC",
 		"MinC",
@@ -27,7 +31,7 @@ func NewServo(a interface{}) *Servo {
 func (s *Servo) Start() bool { return true }
 
 func (s *Servo) InitServo() {
-	gobot.Call(reflect.ValueOf(s.Adaptor).Elem().Interface(), "InitServo")
+	s.Adaptor.InitServo()
 }
 
 func (s *Servo) Move(angle uint8) {
@@ -35,7 +39,7 @@ func (s *Servo) Move(angle uint8) {
 		panic("Servo angle must be an integer between 0-180")
 	}
 	s.CurrentAngle = angle
-	gobot.Call(reflect.ValueOf(s.Adaptor).Elem().Interface(), "ServoWrite", s.Pin, s.angleToSpan(angle))
+	s.Adaptor.ServoWrite(s.Pin, s.angleToSpan(angle))
 }
 
 func (s *Servo) Min() {

@@ -2,19 +2,23 @@ package gobotGPIO
 
 import (
 	"github.com/hybridgroup/gobot"
-	"reflect"
 )
+
+type LedInterface interface {
+	PwmWrite(string, uint8)
+	DigitalWrite(string, string)
+}
 
 type Led struct {
 	gobot.Driver
-	Adaptor *interface{}
+	Adaptor LedInterface
 	High    bool
 }
 
-func NewLed(a interface{}) *Led {
+func NewLed(a LedInterface) *Led {
 	l := new(Led)
 	l.High = false
-	l.Adaptor = &a
+	l.Adaptor = a
 	l.Commands = []string{
 		"ToggleC",
 		"OnC",
@@ -55,9 +59,9 @@ func (l *Led) Toggle() {
 }
 
 func (l *Led) Brightness(level uint8) {
-	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "PwmWrite", l.Pin, level)
+	l.Adaptor.PwmWrite(l.Pin, level)
 }
 
 func (l *Led) changeState(level string) {
-	gobot.Call(reflect.ValueOf(l.Adaptor).Elem().Interface(), "DigitalWrite", l.Pin, level)
+	l.Adaptor.DigitalWrite(l.Pin, level)
 }

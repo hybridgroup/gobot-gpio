@@ -2,17 +2,20 @@ package gobotGPIO
 
 import (
 	"github.com/hybridgroup/gobot"
-	"reflect"
 )
+
+type AnalogSensorInterface interface {
+	AnalogRead(string) int
+}
 
 type AnalogSensor struct {
 	gobot.Driver
-	Adaptor *interface{}
+	Adaptor AnalogSensorInterface
 }
 
-func NewAnalogSensor(a interface{}) *AnalogSensor {
+func NewAnalogSensor(a AnalogSensorInterface) *AnalogSensor {
 	b := new(AnalogSensor)
-	b.Adaptor = &a
+	b.Adaptor = a
 	b.Events = make(map[string]chan interface{})
 	b.Commands = []string{}
 	return b
@@ -21,5 +24,5 @@ func NewAnalogSensor(a interface{}) *AnalogSensor {
 func (a *AnalogSensor) Start() bool { return true }
 
 func (a *AnalogSensor) Read() int {
-	return int(gobot.Call(reflect.ValueOf(a.Adaptor).Elem().Interface(), "AnalogRead", a.Pin)[0].Int())
+	return a.Adaptor.AnalogRead(a.Pin)
 }
