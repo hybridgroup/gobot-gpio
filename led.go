@@ -5,8 +5,8 @@ import (
 )
 
 type LedInterface interface {
-	PwmWrite(string, uint8)
-	DigitalWrite(string, string)
+	PwmWrite(string, byte)
+	DigitalWrite(string, byte)
 }
 
 type Led struct {
@@ -39,13 +39,13 @@ func (l *Led) IsOff() bool {
 }
 
 func (l *Led) On() bool {
-	l.changeState("1")
+	l.changeState(1)
 	l.High = true
 	return true
 }
 
 func (l *Led) Off() bool {
-	l.changeState("0")
+	l.changeState(0)
 	l.High = false
 	return true
 }
@@ -58,10 +58,10 @@ func (l *Led) Toggle() {
 	}
 }
 
-func (l *Led) Brightness(level uint8) {
+func (l *Led) Brightness(level byte) {
 	l.Adaptor.PwmWrite(l.Pin, level)
 }
 
-func (l *Led) changeState(level string) {
+func (l *Led) changeState(level byte) {
 	l.Adaptor.DigitalWrite(l.Pin, level)
 }

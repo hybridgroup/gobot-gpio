@@ -5,7 +5,7 @@ import (
 )
 
 type DigitalSensorInterface interface {
-	DigitalWrite(string, string)
+	DigitalWrite(string, byte)
 	DigitalRead(string) int
 }
 
@@ -31,6 +31,6 @@ func (a *DigitalSensor) Read() int {
 	return a.Adaptor.DigitalRead(a.Pin)
 }
 
-func (a *DigitalSensor) Write(level string) {
+func (a *DigitalSensor) Write(level byte) {
 	a.Adaptor.DigitalWrite(a.Pin, level)
 }

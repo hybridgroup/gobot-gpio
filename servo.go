@@ -6,13 +6,13 @@ import (
 
 type ServoInterface interface {
 	InitServo()
-	ServoWrite(string, uint8)
+	ServoWrite(string, byte)
 }
 
 type Servo struct {
 	gobot.Driver
 	Adaptor      ServoInterface
-	CurrentAngle uint8
+	CurrentAngle byte
 }
 
 func NewServo(a ServoInterface) *Servo {
@@ -54,6 +54,6 @@ func (s *Servo) Max() {
 	s.Move(180)
 }
 
-func (s *Servo) angleToSpan(angle uint8) uint8 {
-	return uint8(angle * (255 / 180))
+func (s *Servo) angleToSpan(angle byte) byte {
+	return byte(angle * (255 / 180))
 }

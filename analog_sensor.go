@@ -6,7 +6,7 @@ import (
 
 type AnalogSensorInterface interface {
 	AnalogRead(string) int
-	PwmWrite(string, uint8)
+	PwmWrite(string, byte)
 }
 
 type AnalogSensor struct {
@@ -31,6 +31,6 @@ func (a *AnalogSensor) Read() int {
 	return a.Adaptor.AnalogRead(a.Pin)
 }
 
-func (a *AnalogSensor) Write(level uint8) {
+func (a *AnalogSensor) Write(level byte) {
 	a.Adaptor.PwmWrite(a.Pin, level)
 }
