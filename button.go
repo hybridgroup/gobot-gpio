@@ -27,13 +27,15 @@ func NewButton(a ButtonInterface) *Button {
 
 func (b *Button) Start() bool {
 	state := 0
-	gobot.Every(b.Interval, func() {
-		new_value := b.readState()
-		if new_value != state && new_value != -1 {
-			state = new_value
-			b.update(new_value)
+	go func() {
+		for {
+			new_value := b.readState()
+			if new_value != state && new_value != -1 {
+				state = new_value
+				b.update(new_value)
+			}
 		}
-	})
+	}()
 	return true
 }
 
@@ -44,9 +46,9 @@ func (b *Button) readState() int {
 func (b *Button) update(new_val int) {
 	if new_val == 1 {
 		b.Active = true
-		b.Events["push"] <- new_val
+		gobot.Publish(b.Events["push"], new_val)
 	} else {
 		b.Active = false
-		b.Events["release"] <- new_val
+		gobot.Publish(b.Events["release"], new_val)
 	}
 }
