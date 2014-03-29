@@ -1,4 +1,4 @@
-# gobot-gpio
+# Gobot Drivers for GPIO
 
 Gobot (http://gobot.io/) is a framework and set of libraries for robotics, physical computing, and the Internet of Thing written in the Go programming language (http://golang.org/).
 
