@@ -19,4 +19,8 @@ var _ = Describe("Analog-Sensor", func() {
 	It("Must be able to Read", func() {
 		Expect(someDriver.Read()).To(Equal(99))
 	})
+
+	PIt("Should have the correct commands", func() {
+		Expect(true)
+	})
 })

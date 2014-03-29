@@ -10,3 +10,7 @@ func (t TestAdaptor) AnalogRead(string) int {
 func (t TestAdaptor) PwmWrite(string, byte) {
 	return
 }
+
+func (t TestAdaptor) DigitalRead(string) int {
+	return 1
+}
