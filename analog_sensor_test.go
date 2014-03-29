@@ -5,8 +5,18 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("Gobot-AnalogSensor Driver", func() {
-	PIt("Exposes a struct to create a new AnalogSensor driver", func() {
-		Expect(true)
+var _ = Describe("Analog-Sensor", func() {
+	var (
+			someAdaptor TestAdaptor
+			someDriver *AnalogSensor
+		)
+
+	BeforeEach(func() {
+		someDriver = NewAnalogSensor(someAdaptor)
+		someDriver.Pin = "1"
+	})
+
+	It("Must be able to Read", func() {
+		Expect(someDriver.Read()).To(Equal(99))
 	})
 })
