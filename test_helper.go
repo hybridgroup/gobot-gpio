@@ -22,3 +22,11 @@ func (t TestAdaptor) DigitalRead(string) int {
 func (t TestAdaptor) DigitalWrite(string, byte) {
 	return
 }
+
+func (t TestAdaptor) InitServo() {
+	return
+}
+
+func (t TestAdaptor) ServoWrite(string, byte) {
+	return
+}

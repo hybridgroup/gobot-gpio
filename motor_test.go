@@ -5,8 +5,62 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("Gobot-Motor Driver", func() {
-	PIt("Exposes a struct to create a new Motor driver", func() {
+var _ = Describe("Motor", func() {
+	var (
+			someAdaptor TestAdaptor
+			someDriver *Motor
+		)
+
+	BeforeEach(func() {
+		someDriver = NewMotor(someAdaptor)
+		someDriver.Pin = "1"
+	})
+
+	It("Must be able to tell if IsOn", func() {
+		Expect(someDriver.IsOn()).To(Equal(false))
+	})
+
+	It("Must be able to tell if IsOff", func() {
+		Expect(someDriver.IsOff()).To(Equal(true))
+	})
+
+	PIt("Should be able to turn On", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to turn Off", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to Toggle", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set to Min speed", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set to Max speed", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set Speed", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set Forward", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set Backward", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to set Direction", func() {
+		Expect(true)
+	})
+
+	PIt("Should be able to Start", func() {
 		Expect(true)
 	})
 })
