@@ -20,8 +20,14 @@ var _ = Describe("Button", func() {
 		Expect(someDriver.readState()).To(Equal(1))
 	})
 
-	PIt("Should be able to update on button state change", func() {
-		Expect(true)
+	It("Must update on button state change to on", func() {
+		someDriver.update(1)
+		Expect(someDriver.Active).To(Equal(true))
+	})
+
+	It("Must update on button state change to off", func() {
+		someDriver.update(0)
+		Expect(someDriver.Active).To(Equal(false))
 	})
 
 	It("Must be able to Start", func() {
