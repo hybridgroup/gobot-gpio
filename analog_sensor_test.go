@@ -20,7 +20,7 @@ var _ = Describe("Analog-Sensor", func() {
 		Expect(someDriver.Read()).To(Equal(99))
 	})
 
-	It("Should be able to Start", func() {
+	It("Must be able to Start", func() {
 		Expect(someDriver.Start()).To(Equal(true))
 	})
 })

@@ -24,7 +24,7 @@ var _ = Describe("Button", func() {
 		Expect(true)
 	})
 
-	PIt("Should be able to Start", func() {
-		Expect(true)
+	It("Must be able to Start", func() {
+		Expect(someDriver.Start()).To(Equal(true))
 	})
 })
