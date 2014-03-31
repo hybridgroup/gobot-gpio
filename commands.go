@@ -32,20 +32,31 @@ func (l *Servo) MaxC(params map[string]interface{}) {
 	l.Max()
 }
 
-// Digital Sensor
-func (d *DigitalSensor) ReadC(params map[string]interface{}) int {
-	return d.Read()
+// Direct Pin
+func (d *DirectPin) DigitalReadC(params map[string]interface{}) int {
+	return d.DigitalRead()
 }
-func (d *DigitalSensor) WriteC(params map[string]interface{}) {
+func (d *DirectPin) DigitalWriteC(params map[string]interface{}) {
 	level, _ := strconv.Atoi(params["level"].(string))
-	d.Write(byte(level))
+	d.DigitalWrite(byte(level))
+}
+func (d *DirectPin) AnalogReadC(params map[string]interface{}) int {
+	return d.AnalogRead()
+}
+func (d *DirectPin) AnalogWriteC(params map[string]interface{}) {
+	level, _ := strconv.Atoi(params["level"].(string))
+	d.AnalogWrite(byte(level))
+}
+func (d *DirectPin) PwmWriteC(params map[string]interface{}) {
+	level, _ := strconv.Atoi(params["level"].(string))
+	d.PwmWrite(byte(level))
+}
+func (d *DirectPin) ServoWriteC(params map[string]interface{}) {
+	level, _ := strconv.Atoi(params["level"].(string))
+	d.ServoWrite(byte(level))
 }
 
 // Analog Sensor
 func (d *AnalogSensor) ReadC(params map[string]interface{}) int {
 	return d.Read()
-}
-func (d *AnalogSensor) WriteC(params map[string]interface{}) {
-	level := byte(params["level"].(float64))
-	d.Write(level)
 }
