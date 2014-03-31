@@ -47,6 +47,8 @@ func NewMotor(a MotorInterface) *Motor {
 }
 
 func (m *Motor) Start() bool { return true }
+func (m *Motor) Halt() bool  { return true }
+func (m *Motor) Init() bool  { return true }
 
 func (m *Motor) Off() {
 	if m.isDigital() {

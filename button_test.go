@@ -7,9 +7,9 @@ import (
 
 var _ = Describe("Button", func() {
 	var (
-			someAdaptor TestAdaptor
-			someDriver *Button
-		)
+		someAdaptor TestAdaptor
+		someDriver  *Button
+	)
 
 	BeforeEach(func() {
 		someDriver = NewButton(someAdaptor)

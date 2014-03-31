@@ -38,6 +38,8 @@ func (b *Button) Start() bool {
 	}()
 	return true
 }
+func (b *Button) Halt() bool { return true }
+func (b *Button) Init() bool { return true }
 
 func (b *Button) readState() int {
 	return b.Adaptor.DigitalRead(b.Pin)

@@ -7,9 +7,9 @@ import (
 
 var _ = Describe("Led", func() {
 	var (
-			someAdaptor TestAdaptor
-			someDriver *Led
-		)
+		someAdaptor TestAdaptor
+		someDriver  *Led
+	)
 
 	BeforeEach(func() {
 		someDriver = NewLed(someAdaptor)

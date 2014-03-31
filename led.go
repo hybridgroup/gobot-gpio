@@ -29,6 +29,8 @@ func NewLed(a LedInterface) *Led {
 }
 
 func (l *Led) Start() bool { return true }
+func (l *Led) Halt() bool  { return true }
+func (l *Led) Init() bool  { return true }
 
 func (l *Led) IsOn() bool {
 	return l.High

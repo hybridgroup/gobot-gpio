@@ -29,6 +29,8 @@ func NewServo(a ServoInterface) *Servo {
 }
 
 func (s *Servo) Start() bool { return true }
+func (s *Servo) Halt() bool  { return true }
+func (s *Servo) Init() bool  { return true }
 
 func (s *Servo) InitServo() {
 	s.Adaptor.InitServo()

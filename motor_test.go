@@ -7,9 +7,9 @@ import (
 
 var _ = Describe("Motor", func() {
 	var (
-			someAdaptor TestAdaptor
-			someDriver *Motor
-		)
+		someAdaptor TestAdaptor
+		someDriver  *Motor
+	)
 
 	BeforeEach(func() {
 		someDriver = NewMotor(someAdaptor)

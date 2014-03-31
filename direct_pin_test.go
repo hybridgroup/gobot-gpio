@@ -7,9 +7,9 @@ import (
 
 var _ = Describe("DirectPin", func() {
 	var (
-			someAdaptor TestAdaptor
-			someDriver *DirectPin
-		)
+		someAdaptor TestAdaptor
+		someDriver  *DirectPin
+	)
 
 	BeforeEach(func() {
 		someDriver = NewDirectPin(someAdaptor)

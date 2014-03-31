@@ -7,9 +7,9 @@ import (
 
 var _ = Describe("Analog-Sensor", func() {
 	var (
-			someAdaptor TestAdaptor
-			someDriver *AnalogSensor
-		)
+		someAdaptor TestAdaptor
+		someDriver  *AnalogSensor
+	)
 
 	BeforeEach(func() {
 		someDriver = NewAnalogSensor(someAdaptor)

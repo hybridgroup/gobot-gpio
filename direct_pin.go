@@ -34,6 +34,8 @@ func NewDirectPin(a DirectPinInterface) *DirectPin {
 }
 
 func (a *DirectPin) Start() bool { return true }
+func (a *DirectPin) Halt() bool  { return true }
+func (a *DirectPin) Init() bool  { return true }
 
 func (a *DirectPin) DigitalRead() int {
 	return a.Adaptor.DigitalRead(a.Pin)

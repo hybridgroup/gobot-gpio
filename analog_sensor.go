@@ -24,6 +24,8 @@ func NewAnalogSensor(a AnalogSensorInterface) *AnalogSensor {
 }
 
 func (a *AnalogSensor) Start() bool { return true }
+func (a *AnalogSensor) Init() bool  { return true }
+func (a *AnalogSensor) Halt() bool  { return true }
 
 func (a *AnalogSensor) Read() int {
 	return a.Adaptor.AnalogRead(a.Pin)
