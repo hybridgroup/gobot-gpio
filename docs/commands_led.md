@@ -24,17 +24,13 @@ Turns LED off.
 
 **OffC**
 
-## Brightness(level)
+## Brightness(level byte)
 
 Sets brightness of the led to the specified brightness value passed to brightness(level byte).
 
 #### Params
 
-- **level** - byte
-
-#### Returns
-
-- **integer**
+- **level** - **byte**
 
 #### API Command
 

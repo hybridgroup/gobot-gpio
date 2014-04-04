@@ -1,68 +1,69 @@
 # Functions
 
-## OffC
-
-Stops the motor.
-
-## OnC
+## On
 
 Starts the motor.
 
-## IsOnC
+## Off
 
-Starts the motor if is not started.
+Stops the motor.
 
-## IsOffC
+## IsOn
 
-Stops the motor if is not stoped.
+Returns true if the motor is on
 
-## ToggleC
+#### Returns
+
+- **bool**
+
+## IsOff
+
+Returns true if the motor is off
+
+#### Returns
+
+- **bool**
+
+## Toggle
 
 Sets the state of the motor to the oposite of the current state, if motor is on then sets it to off.
 
-## SpeedC(value, byte)
+## Speed(value byte)
 
 Sets the speed of the motor to the value provided in the speed param, speed value must be an integer between 0 and 255.
 
 #### Params
 
-- **value** - params
-- **byte** - params
+- **value** - **byte**
 
-#### Returns
+## Min
 
-- **integer**
+Sets the motor to it's minimum speed.
 
-## MinC
+## Max
 
-Sets the min speed value.
+Sets the motor to it's max speed.
 
-## MaxC
+## Forward(speed byte) 
 
-Sets the max speed value.
-
-## ForwardC(speed, byte) 
-
-Sets the motor to go forward.
+Sets the motor to a forward direction at the specified speed.
 
 #### Params
 
-- **speed** - params
-- **byte** - params
+- **speed** - **byte**
 
-## BackwardC(speed byte)
+## Backward(speed byte)
 
-Sets the motor to go backward.
+Sets the motor to a backward direction at the specified speed.
 
 #### Params
 
-- **speed** - params
-- **byte** - params
+- **speed** - **byte**
 
-## CurrentSpeedC
+## Direction(direction string) 
 
-Returns the current speed of the motor as an integer between 0 and 255.
+Sets the direction of the motor
 
-#### Returns
+#### Params
 
-- **integer**
+- **direction** - **string**

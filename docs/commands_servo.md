@@ -1,16 +1,12 @@
 # Functions
 
-## Move(angle)
+## Move(angle uint8)
 
-text here
+Moves the servo to the specified angle, angle must be an integer value between 0 and 180.
 
 #### Params
 
-- **angle** - the value of the angle
-
-#### Returns
-
-- **integer**
+- **angle** - **uint8**
 
 #### API Command
 
@@ -18,7 +14,7 @@ text here
 
 ## Min
 
-text here
+Moves the servo to 0.
 
 #### API Command
 
@@ -26,7 +22,7 @@ text here
 
 ## Center
 
-text here
+Moves the servo to 90
 
 #### API Command
 
@@ -34,7 +30,7 @@ text here
 
 ## Max
 
-text here
+Moves the servo to 180
 
 #### API Command
 
