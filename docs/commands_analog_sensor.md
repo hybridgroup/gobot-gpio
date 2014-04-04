@@ -1,25 +1,14 @@
-# Commands
+# Functions
 
-## ReadC
+## Read
 
 Returns an integer value that represents the analog read from the sensor.
 
-##### Params
+#### Returns
 
-`no params`
+- **integer**
 
-##### Returns
+#### API Command
 
-integer
+**ReadC**
 
-## WriteC
-
-Text here
-
-##### Params
-
-`no params`
-
-##### Returns
-
-nil
