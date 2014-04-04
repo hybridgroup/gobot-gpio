@@ -1,49 +1,42 @@
-# Commands
+# Functions
 
-## MoveC
+## Move(angle)
 
-Text here
+text here
 
-##### Params
+#### Params
 
-`no params`
+- **angle** - the value of the angle
 
-##### Returns
+#### Returns
 
-nil
+- **integer**
 
-## MinC
+#### API Command
 
-Text here
+**MoveC**
 
-##### Params
+## Min
 
-`no params`
+text here
 
-##### Returns
+#### API Command
 
-nil
+**MinC**
 
-## CenterC
+## Center
 
-Text here
+text here
 
-##### Params
+#### API Command
 
-`no params`
+**CenterC**
 
-##### Returns
+## Max
 
-nil
+text here
 
-## MaxC
+#### API Command
 
-Text here
+**MaxC**
 
-##### Params
-
-`no params`
-
-##### Returns
-
-nil
