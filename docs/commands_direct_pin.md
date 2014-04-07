@@ -6,7 +6,7 @@ Returns an integer value that represents the digital read from the pin.
 
 #### Returns
 
-- **integer**
+- **int** - integer value
 
 #### API Command
 
@@ -18,7 +18,11 @@ Writes a ON/OFF using digital write to a pin
 
 #### Params
 
-- **level** - **byte**
+- **level** - **[]byte** - on/off value
+
+#### Returns
+
+- **byte(level)** - on/off value
 
 #### API Command
 
@@ -30,7 +34,7 @@ Returns an integer value that represents the analog read from the pin.
 
 #### Returns
 
-- **integer**
+- **int**- the analog read
 
 #### API Command
 
@@ -44,6 +48,10 @@ Writes a value using analog write to a pin
 
 - **level** - **byte**
 
+#### Returns
+
+- **byte(level)** - pin value
+
 #### API Command
 
 **AnalogWriteC**
@@ -56,6 +64,10 @@ Writes a value using Pulse Width Modulation (PWM) to a pin
 
 - **level** - **byte**
 
+#### Returns
+
+- **byte(level)** - PWM value
+
 #### API Command
 
 **PwmWriteC**
@@ -67,6 +79,10 @@ Writes a value using servo write to a pin
 ##### Params
 
 - **level** - **byte**
+
+#### Returns
+
+- **byte(level)** - pin value
 
 #### API Command
 

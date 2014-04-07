@@ -8,6 +8,10 @@ Moves the servo to the specified angle, angle must be an integer value between 0
 
 - **angle** - **uint8**
 
+#### Returns
+
+- **angle** - angle value
+
 #### API Command
 
 **MoveC**

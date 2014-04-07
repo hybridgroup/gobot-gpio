@@ -4,9 +4,17 @@
 
 Starts the motor.
 
+#### Returns
+
+- **CurrentSpeed** - current speed value
+
 ## Off
 
 Stops the motor.
+
+#### Returns
+
+- **Speed** - speed value
 
 ## IsOn
 
@@ -14,7 +22,7 @@ Returns true if the motor is on
 
 #### Returns
 
-- **bool**
+- **bool** 
 
 ## IsOff
 
@@ -36,6 +44,10 @@ Sets the speed of the motor to the value provided in the speed param, speed valu
 
 - **value** - **byte**
 
+#### Returns
+
+- **SpeedPin value**
+
 ## Min
 
 Sets the motor to it's minimum speed.
@@ -52,6 +64,10 @@ Sets the motor to a forward direction at the specified speed.
 
 - **speed** - **byte**
 
+#### Returns
+
+- **speed**
+
 ## Backward(speed byte)
 
 Sets the motor to a backward direction at the specified speed.
@@ -59,6 +75,10 @@ Sets the motor to a backward direction at the specified speed.
 #### Params
 
 - **speed** - **byte**
+
+#### Returns
+
+- **speed**
 
 ## Direction(direction string) 
 
