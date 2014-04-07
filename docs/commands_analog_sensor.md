@@ -6,7 +6,7 @@ Returns an integer value that represents the analog read from the sensor.
 
 #### Returns
 
-- **integer**
+- **int** - integer value
 
 #### API Command
 

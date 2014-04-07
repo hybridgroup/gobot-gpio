@@ -32,6 +32,10 @@ Sets brightness of the led to the specified brightness value passed to brightnes
 
 - **level** - **byte**
 
+#### Returns
+
+- **level** - brightness value
+
 #### API Command
 
 **BrightnessC**
