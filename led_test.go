@@ -7,40 +7,52 @@ import (
 
 var _ = Describe("Led", func() {
 	var (
-		someAdaptor TestAdaptor
-		someDriver  *Led
+		adaptor TestAdaptor
+		driver  *Led
 	)
 
 	BeforeEach(func() {
-		someDriver = NewLed(someAdaptor)
-		someDriver.Pin = "1"
+		driver = NewLed(adaptor)
+		driver.Pin = "1"
 	})
 
 	It("Must be able to tell if IsOn", func() {
-		Expect(someDriver.IsOn()).To(Equal(false))
+		Expect(driver.IsOn()).NotTo(BeTrue())
 	})
 
 	It("Must be able to tell if IsOff", func() {
-		Expect(someDriver.IsOff()).To(Equal(true))
+		Expect(driver.IsOff()).To(BeTrue())
 	})
 
-	PIt("Should be able to turn On", func() {
-		Expect(true)
+	It("Should be able to turn On", func() {
+		Expect(driver.On()).To(BeTrue())
+		Expect(driver.IsOn()).To(BeTrue())
 	})
 
-	PIt("Should be able to turn Off", func() {
-		Expect(true)
+	It("Should be able to turn Off", func() {
+		Expect(driver.Off()).To(BeTrue())
+		Expect(driver.IsOff()).To(BeTrue())
 	})
 
-	PIt("Should be able to Toggle", func() {
-		Expect(true)
+	It("Should be able to Toggle", func() {
+		driver.Off()
+		driver.Toggle()
+		Expect(driver.IsOn()).To(BeTrue())
+		driver.Toggle()
+		Expect(driver.IsOff()).To(BeTrue())
 	})
 
-	PIt("Should be able to set Brightness", func() {
-		Expect(true)
+	It("Should be able to set Brightness", func() {
+		driver.Brightness(150)
 	})
 
 	It("Must be able to Start", func() {
-		Expect(someDriver.Start()).To(Equal(true))
+		Expect(driver.Start()).To(Equal(true))
+	})
+	It("Must be able to Init", func() {
+		Expect(driver.Init()).To(Equal(true))
+	})
+	It("Must be able to Halt", func() {
+		Expect(driver.Halt()).To(Equal(true))
 	})
 })
