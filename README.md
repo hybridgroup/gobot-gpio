@@ -4,7 +4,7 @@ Gobot (http://gobot.io/) is a framework and set of libraries for robotics, physi
 
 This library provides drivers for General Purpose Input/Output (GPIO) devices (https://en.wikipedia.org/wiki/General_Purpose_Input/Output). It is normally not used directly, but instead is registered by adaptor library such as gobot-firmata (https://github.com/hybridgroup/gobot-firmata) that supports the needed interfaces for GPIO devices.
 
-[![Build Status](https://travis-ci.org/hybridgroup/gobot-gpio.svg?branch=master)](https://travis-ci.org/hybridgroup/gobot-gpio)
+[![Build Status](https://travis-ci.org/hybridgroup/gobot-gpio.svg?branch=master)](https://travis-ci.org/hybridgroup/gobot-gpio) [![Coverage Status](https://coveralls.io/repos/hybridgroup/gobot-gpio/badge.png)](https://coveralls.io/r/hybridgroup/gobot-gpio)
 
 ## Getting Started
 Install the library with: `go get -u github.com/hybridgroup/gobot-gpio`
