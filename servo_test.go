@@ -7,32 +7,46 @@ import (
 
 var _ = Describe("Servo", func() {
 	var (
-		someAdaptor TestAdaptor
-		someDriver  *Servo
+		adaptor TestAdaptor
+		driver  *Servo
 	)
 
 	BeforeEach(func() {
-		someDriver = NewServo(someAdaptor)
-		someDriver.Pin = "1"
+		driver = NewServo(adaptor)
+		driver.Pin = "1"
 	})
 
-	PIt("Should be able to Move", func() {
-		Expect(true)
+	It("Should be able to Move", func() {
+		driver.Move(100)
+		Expect(driver.CurrentAngle).To(Equal(uint8(100)))
 	})
 
-	PIt("Should be able to move to Min", func() {
-		Expect(true)
+	It("Should be able to move to Min", func() {
+		driver.Min()
+		Expect(driver.CurrentAngle).To(Equal(uint8(0)))
 	})
 
-	PIt("Should be able to move to Max", func() {
-		Expect(true)
+	It("Should be able to move to Max", func() {
+		driver.Max()
+		Expect(driver.CurrentAngle).To(Equal(uint8(180)))
 	})
 
-	PIt("Should be able to move to Center", func() {
-		Expect(true)
+	It("Should be able to move to Center", func() {
+		driver.Center()
+		Expect(driver.CurrentAngle).To(Equal(uint8(90)))
+	})
+
+	It("Should be able to move to init servo", func() {
+		driver.InitServo()
 	})
 
 	It("Must be able to Start", func() {
-		Expect(someDriver.Start()).To(Equal(true))
+		Expect(driver.Start()).To(Equal(true))
+	})
+	It("Must be able to Init", func() {
+		Expect(driver.Init()).To(Equal(true))
+	})
+	It("Must be able to Halt", func() {
+		Expect(driver.Halt()).To(Equal(true))
 	})
 })
