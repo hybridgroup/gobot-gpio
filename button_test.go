@@ -33,4 +33,10 @@ var _ = Describe("Button", func() {
 	It("Must be able to Start", func() {
 		Expect(someDriver.Start()).To(Equal(true))
 	})
+	It("Must be able to Init", func() {
+		Expect(someDriver.Init()).To(Equal(true))
+	})
+	It("Must be able to Halt", func() {
+		Expect(someDriver.Halt()).To(Equal(true))
+	})
 })
