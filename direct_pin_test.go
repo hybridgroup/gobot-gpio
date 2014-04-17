@@ -7,40 +7,46 @@ import (
 
 var _ = Describe("DirectPin", func() {
 	var (
-		someAdaptor TestAdaptor
-		someDriver  *DirectPin
+		adaptor TestAdaptor
+		driver  *DirectPin
 	)
 
 	BeforeEach(func() {
-		someDriver = NewDirectPin(someAdaptor)
-		someDriver.Pin = "1"
+		driver = NewDirectPin(adaptor)
+		driver.Pin = "1"
 	})
 
-	PIt("Should be able to DigitalRead", func() {
-		Expect(true)
+	It("Should be able to DigitalRead", func() {
+		Expect(driver.DigitalRead()).To(Equal(1))
 	})
 
-	PIt("Should be able to DigitalWrite", func() {
-		Expect(true)
+	It("Should be able to DigitalWrite", func() {
+		driver.DigitalWrite(1)
 	})
 
-	PIt("Should be able to AnalogRead", func() {
-		Expect(true)
+	It("Should be able to AnalogRead", func() {
+		Expect(driver.AnalogRead()).To(Equal(99))
 	})
 
-	PIt("Should be able to AnalogWrite", func() {
-		Expect(true)
+	It("Should be able to AnalogWrite", func() {
+		driver.AnalogWrite(100)
 	})
 
-	PIt("Should be able to PwmWrite", func() {
-		Expect(true)
+	It("Should be able to PwmWrite", func() {
+		driver.PwmWrite(100)
 	})
 
-	PIt("Should be able to ServoWrite", func() {
-		Expect(true)
+	It("Should be able to ServoWrite", func() {
+		driver.ServoWrite(100)
 	})
 
-	PIt("Should be able to Start", func() {
-		Expect(true)
+	It("Should be able to Start", func() {
+		Expect(driver.Start()).To(BeTrue())
+	})
+	It("Should be able to Halt", func() {
+		Expect(driver.Halt()).To(BeTrue())
+	})
+	It("Should be able to Init", func() {
+		Expect(driver.Init()).To(BeTrue())
 	})
 })
