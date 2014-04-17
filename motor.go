@@ -148,21 +148,6 @@ func (m *Motor) isDigital() bool {
 	return false
 }
 
-func (m *Motor) isAnalog() bool {
-	if m.CurrentMode == "analog" {
-		return true
-	}
-	return false
-}
-
-func (m *Motor) isForward() bool {
-	return m.CurrentDirection == "forward"
-}
-
-func (m *Motor) isBackward() bool {
-	return !m.isForward()
-}
-
 func (m *Motor) changeState(state byte) {
 	m.CurrentState = state
 	if state == 1 {
