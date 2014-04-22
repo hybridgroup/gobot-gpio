@@ -2,7 +2,6 @@ package gobotGPIO
 
 import (
 	"github.com/hybridgroup/gobot"
-	"time"
 )
 
 type MakeyButtonInterface interface {
@@ -11,7 +10,7 @@ type MakeyButtonInterface interface {
 
 type MakeyButton struct {
 	gobot.Driver
-	Adaptor ButtonInterface
+	Adaptor MakeyButtonInterface
 	Active  bool
 	data    []int
 }
@@ -32,17 +31,10 @@ func (b *MakeyButton) Start() bool {
 	go func() {
 		for {
 			new_value := b.readState()
-			if new_value != -1 {
-				b.data = append(b.data, new_value)
-				if len(b.data) > 5 {
-					b.data = b.data[1:len(b.data)]
-				}
-				if new_value != state {
-					state = new_value
-					b.update(new_value)
-				}
+			if new_value != state && new_value != -1 {
+				state = new_value
+				b.update(new_value)
 			}
-			time.Sleep(50 * time.Millisecond)
 		}
 	}()
 	return true
@@ -55,23 +47,11 @@ func (b *MakeyButton) readState() int {
 }
 
 func (b *MakeyButton) update(new_val int) {
-	if b.averageData() <= 0.5 {
+	if new_val == 0 {
 		b.Active = true
 		gobot.Publish(b.Events["push"], new_val)
 	} else {
 		b.Active = false
 		gobot.Publish(b.Events["release"], new_val)
 	}
-}
-
-func (b *MakeyButton) averageData() float64 {
-	var result float64
-
-	if len(b.data) > 0 {
-		for i := range b.data {
-			result += float64(b.data[i])
-		}
-		result = result / float64(len(b.data))
-	}
-	return result
 }
