@@ -1,3 +1,5 @@
+###NOTE: This repo has been merged into the main Gobot project and will soon be deprecated. It is no longer separately maintained. Please use the Gobot [dev](https://github.com/hybridgroup/gobot/tree/dev) branch for the most up to date code.
+
 # Gobot Drivers for GPIO
 
 Gobot (http://gobot.io/) is a framework and set of libraries for robotics, physical computing, and the Internet of Thing written in the Go programming language (http://golang.org/).
